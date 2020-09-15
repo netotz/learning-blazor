@@ -1,0 +1,16 @@
+﻿@page "/todo"
+
+<h3>To do (@Incompleted)</h3>
+
+<ul>
+    @foreach(var item in Items) {
+        <li>
+            <input type="checkbox" @bind="item.IsDone" />
+            <input @bind="item.Title" />
+            @*@item.Title*@
+        </li>
+    }
+</ul>
+
+<input placeholder="Something to do" @bind="NewTitle"/>
+<button @onclick="AddItem">Add item</button>
