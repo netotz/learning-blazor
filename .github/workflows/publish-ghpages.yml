@@ -1,6 +1,4 @@
 name: Deploy to GitHub Pages
-env:
-  PUBLISH_DIR: release
 
 on:
   push:
@@ -30,7 +28,7 @@ jobs:
 
     - name: Publish
       run: |
-        dotnet publish --configuration Release --output release --nologo
+        dotnet publish ./LearningBlazorWASM/ --configuration Release --output release --nologo
         
     # changes the base-tag in index.html from '/' to 'LearningBlazor' to match GitHub Pages repository subdirectory
     - name: Rewrite base href
