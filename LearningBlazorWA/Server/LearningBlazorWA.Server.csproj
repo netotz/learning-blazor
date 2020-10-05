@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>25f4f011-39f6-497e-9311-cf7315366446</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,7 +10,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\LearningBlazorWA.Client.csproj" />
     <ProjectReference Include="..\Shared\LearningBlazorWA.Shared.csproj" />
   </ItemGroup>
 

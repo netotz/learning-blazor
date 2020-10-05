@@ -5,11 +5,7 @@ VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningBlazor", "LearningBlazor.csproj", "{CFFFA465-3D67-400A-9CAF-AB1CE79C6D7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBlazorWA.Server", "..\LearningBlazorWA\Server\LearningBlazorWA.Server.csproj", "{68A692CE-8290-4A06-AF81-6F6BCA1A8F4F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBlazorWA.Client", "..\LearningBlazorWA\Client\LearningBlazorWA.Client.csproj", "{1668CCAF-B2BA-480E-A691-0A3D4AA0AEF9}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBlazorWA.Shared", "..\LearningBlazorWA\Shared\LearningBlazorWA.Shared.csproj", "{49C22636-EEFA-4600-870F-817DD514A0CA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBlazorWASM", "..\LearningBlazorWASM\LearningBlazorWASM.csproj", "{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,18 +17,10 @@ Global
 		{CFFFA465-3D67-400A-9CAF-AB1CE79C6D7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CFFFA465-3D67-400A-9CAF-AB1CE79C6D7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFFFA465-3D67-400A-9CAF-AB1CE79C6D7C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{68A692CE-8290-4A06-AF81-6F6BCA1A8F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68A692CE-8290-4A06-AF81-6F6BCA1A8F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68A692CE-8290-4A06-AF81-6F6BCA1A8F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68A692CE-8290-4A06-AF81-6F6BCA1A8F4F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1668CCAF-B2BA-480E-A691-0A3D4AA0AEF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1668CCAF-B2BA-480E-A691-0A3D4AA0AEF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1668CCAF-B2BA-480E-A691-0A3D4AA0AEF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1668CCAF-B2BA-480E-A691-0A3D4AA0AEF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{49C22636-EEFA-4600-870F-817DD514A0CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{49C22636-EEFA-4600-870F-817DD514A0CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{49C22636-EEFA-4600-870F-817DD514A0CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{49C22636-EEFA-4600-870F-817DD514A0CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
