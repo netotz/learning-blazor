@@ -3,8 +3,6 @@ name: .NET Core
 on:
   push:
     branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -18,8 +16,14 @@ jobs:
     - name: Current directory
       run: dir
     - name: Install dependencies
-      run: dotnet restore ./LearningBlazor
+      run: |
+        dotnet restore ./LearningBlazor
+        dotnet restore ./LearningBlazorWASM
     - name: Build
-      run: dotnet build --configuration Release --no-restore ./LearningBlazor
+      run: |
+        dotnet build --configuration Release --no-restore ./LearningBlazor
+        dotnet build --configuration Release --no-restore ./LearningBlazorWASM
     - name: Test
-      run: dotnet test --no-restore --verbosity normal ./LearningBlazor
+      run: |
+        dotnet test --no-restore --verbosity normal ./LearningBlazor
+        dotnet test --no-restore --verbosity normal ./LearningBlazorWASM
