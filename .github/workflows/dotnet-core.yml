@@ -15,9 +15,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.301
+    - name: Current directory
+      run: dir
     - name: Install dependencies
-      run: dotnet restore
+      run: dotnet restore ./LearningBlazor
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: dotnet build --configuration Release --no-restore ./LearningBlazor
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal ./LearningBlazor
