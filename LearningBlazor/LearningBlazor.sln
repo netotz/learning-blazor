@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningBlazor", "LearningBlazor.csproj", "{CFFFA465-3D67-400A-9CAF-AB1CE79C6D7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBlazorWASM", "..\LearningBlazorWASM\LearningBlazorWASM.csproj", "{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningBlazorWASM", "..\LearningBlazorWASM\LearningBlazorWASM.csproj", "{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningBlazor.Tests", "..\LearningBlazor.Tests\LearningBlazor.Tests.csproj", "{6707456E-D05E-4D43-9CA4-61A58CB991C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F229C2F9-EF32-42E8-B5CD-64D71DB69D78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6707456E-D05E-4D43-9CA4-61A58CB991C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6707456E-D05E-4D43-9CA4-61A58CB991C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6707456E-D05E-4D43-9CA4-61A58CB991C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6707456E-D05E-4D43-9CA4-61A58CB991C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
