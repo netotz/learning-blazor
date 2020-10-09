@@ -24,7 +24,7 @@ jobs:
 
     - name: Test
       run: |
-        dotnet test --verbosity diagnostic ./LearningBlazor.Tests
+        dotnet test --verbosity normal ./LearningBlazor.Tests
 
     - name: Publish
       run: |
