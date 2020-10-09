@@ -19,7 +19,7 @@ namespace LearningBlazor.Tests {
         [Fact]
         public void Add_AddingSameNumber_ReturnsDouble() {
             var onePlusOne = 1 + 1;
-            Assert.Equal(1, onePlusOne);
+            Assert.Equal(0, onePlusOne);
         }
     }
 }
