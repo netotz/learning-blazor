@@ -1,3 +1,5 @@
+using LearningBlazorWASM.Services;
+
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,9 +13,18 @@ namespace LearningBlazorWASM {
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
-            builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
+            builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddScoped(sp =>
+                new HttpClient {
+                    BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
+                });
 
-            await builder.Build().RunAsync();
+            var host = builder.Build();
+
+            //var forecastService = host.Services.GetRequiredService<WeatherForecastService>();
+            //await forecastService.GetRandomForecastAsync(DateTime.Now, 100);
+
+            await host.RunAsync();
         }
     }
 }
