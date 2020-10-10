@@ -1,5 +1,7 @@
 ﻿using LearningBlazorWASM.Models;
 
+using System.IO;
+
 using Xunit;
 
 namespace LearningBlazor.Tests {
