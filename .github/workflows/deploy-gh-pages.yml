@@ -1,0 +1,36 @@
+name: Publish and deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+
+    - name: Publish
+      run: |
+        dotnet publish ./LearningBlazorWASM/ --configuration Release --output release --nologo
+        
+    # changes the base-tag in index.html from '/' to 'learning-blazor' to match GitHub Pages repository subdirectory
+    - name: Rewrite base href
+      run: sed -i 's/<base href="\/" \/>/<base href="\/learning-blazor\/" \/>/g' release/wwwroot/index.html
+
+    # add .nojekyll empty file to files and folders starting with an underscore
+    - name: Add .nojekyll
+      run: touch release/wwwroot/.nojekyll
+
+    - name: Deploy to GiHub Pages
+      uses: JamesIves/github-pages-deploy-action@3.5.9
+      with:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: release/wwwroot
