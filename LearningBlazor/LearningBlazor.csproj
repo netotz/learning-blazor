@@ -5,4 +5,8 @@
     <UserSecretsId>3764e4f2-7707-439d-a1aa-ece5de5a41ed</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.7.0" />
+  </ItemGroup>
+
 </Project>

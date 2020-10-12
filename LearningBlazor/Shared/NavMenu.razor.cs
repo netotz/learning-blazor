@@ -1,4 +1,5 @@
 ﻿namespace LearningBlazor.Shared {
+
     public partial class NavMenu {
         private bool collapseNavMenu = true;
 

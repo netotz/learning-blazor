@@ -3,7 +3,9 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace LearningBlazor.Data {
+
     public class WeatherForecastService {
+
         private static readonly string[] Summaries = new[]
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -16,7 +18,7 @@ namespace LearningBlazor.Data {
                     Date = startDate.AddDays(index),
                     TemperatureC = random.Next(-20, 55),
                     Summary = Summaries[random.Next(Summaries.Length)]
-            }).ToArray());
+                }).ToArray());
         }
     }
 }

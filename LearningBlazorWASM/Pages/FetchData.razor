@@ -4,12 +4,10 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
-@if (Forecasts is null)
-{
+@if (Forecasts is null) {
     <p><em>@LoadingLabel</em></p>
 }
-else
-{
+else {
     <table class="table">
         <thead>
             <tr>
@@ -20,8 +18,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in Forecasts)
-            {
+            @foreach (var forecast in Forecasts) {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
                     <td>@forecast.CelsiusTemperature</td>

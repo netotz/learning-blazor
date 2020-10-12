@@ -1,8 +1,10 @@
 ﻿using LearningBlazor.Data;
-using System.Linq;
+
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LearningBlazor.Pages {
+
     public partial class Todo {
         private IList<TodoItem> Items { get; set; } = new List<TodoItem>();
         private string NewTitle { get; set; }

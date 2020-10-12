@@ -1,6 +1,7 @@
 using System;
 
 namespace LearningBlazor.Data {
+
     public class WeatherForecast {
         public DateTime Date { get; set; }
 

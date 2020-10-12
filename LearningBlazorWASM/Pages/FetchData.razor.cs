@@ -7,8 +7,8 @@ using System;
 using System.Threading.Tasks;
 
 namespace LearningBlazorWASM.Pages {
-    public partial class FetchData {
 
+    public partial class FetchData {
         public string LoadingLabel { get; set; }
 
         public WeatherForecast[] Forecasts { get; set; }

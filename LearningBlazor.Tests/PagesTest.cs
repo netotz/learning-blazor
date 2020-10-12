@@ -5,6 +5,7 @@ using LearningBlazorWASM.Pages;
 using Xunit;
 
 namespace LearningBlazor.Tests {
+
     public class PagesTest {
 
         /// <summary>
