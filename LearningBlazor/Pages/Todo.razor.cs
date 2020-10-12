@@ -1,7 +1,7 @@
-﻿using LearningBlazor.Data;
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+
+using LearningBlazor.Data;
 
 namespace LearningBlazor.Pages {
 

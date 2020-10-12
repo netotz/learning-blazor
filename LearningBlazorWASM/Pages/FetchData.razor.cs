@@ -1,10 +1,10 @@
-﻿using LearningBlazorWASM.Models;
+﻿using System;
+using System.Threading.Tasks;
+
+using LearningBlazorWASM.Models;
 using LearningBlazorWASM.Services;
 
 using Microsoft.AspNetCore.Components;
-
-using System;
-using System.Threading.Tasks;
 
 namespace LearningBlazorWASM.Pages {
 

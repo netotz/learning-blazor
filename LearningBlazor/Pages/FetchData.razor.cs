@@ -1,9 +1,9 @@
-﻿using LearningBlazor.Data;
+﻿using System;
+using System.Threading.Tasks;
+
+using LearningBlazor.Data;
 
 using Microsoft.AspNetCore.Components;
-
-using System;
-using System.Threading.Tasks;
 
 namespace LearningBlazor.Pages {
 

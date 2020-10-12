@@ -1,11 +1,11 @@
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
+
 using LearningBlazorWASM.Services;
 
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 
 namespace LearningBlazorWASM {
 
@@ -21,7 +21,7 @@ namespace LearningBlazorWASM {
                     BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
                 });
 
-            var host = builder.Build();
+            WebAssemblyHost host = builder.Build();
 
             //var forecastService = host.Services.GetRequiredService<WeatherForecastService>();
             //await forecastService.GetRandomForecastAsync(DateTime.Now, 100);
