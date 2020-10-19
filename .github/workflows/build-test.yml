@@ -15,23 +15,11 @@ jobs:
       with:
         dotnet-version: 3.1.301
 
-    - name: Cache packages
-      id: cache-nugets
-      uses: actions/cache@v2
-      with:
-        path: ~/.nuget/packages
-        key: ${{ runner.os }}-nuget-${{ hashFiles('**/LearningBlazorWASM/packages.lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-nuget-
-
     - name: Install dependencies
-      if: steps.cache-nugets.outputs.cache-hit != 'true'
-      run: |
-        dotnet restore ./LearningBlazorWASM --locked-mode
+      run: dotnet restore ./LearningBlazorWASM
 
     - name: Build
-      run: |
-        dotnet build ./LearningBlazorWASM --configuration Release --no-restore
+      run: dotnet build ./LearningBlazorWASM --configuration Release --no-restore
 
     - name: Unit testing
       run: dotnet test ./LearningBlazor.Tests
