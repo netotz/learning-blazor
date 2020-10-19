@@ -21,6 +21,8 @@ jobs:
       with:
         path: ~/.nuget/packages
         key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-nuget-
 
     - name: Install dependencies
       if: steps.cache-nugets.outputs.cache-hit != 'true'
