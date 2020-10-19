@@ -7,7 +7,6 @@ using Xunit;
 namespace LearningBlazor.Tests {
 
     public class PagesTest {
-
         /// <summary>
         /// The first click on the Counter component should set it to its property <c>CurrentCount</c>.
         /// </summary>
