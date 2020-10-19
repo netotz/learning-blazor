@@ -25,11 +25,15 @@ jobs:
           ${{ runner.os }}-nuget-
 
     - name: Install dependencies
-      if: steps.cache-nugets.outputs.cache-hit != true
-      run: dotnet restore
+      if: steps.cache-nugets.outputs.cache-hit != 'true'
+      run: |
+        dotnet restore ./LearningBlazorWASM
+        dotnet restore ./LearningBlazor.Tests
 
     - name: Build
-      run: dotnet build --configuration Release --no-restore
+      run: |
+        dotnet build ./LearningBlazorWASM --configuration Release --no-restore
+        dotnet build ./LearningBlazor.Tests --configuration Release --no-restore
 
     - name: Unit testing
       run: dotnet test ./LearningBlazor.Tests --no-build --no-restore
