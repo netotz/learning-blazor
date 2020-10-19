@@ -21,7 +21,7 @@ namespace LearningBlazorWASM {
                     BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
                 });
 
-            WebAssemblyHost host = builder.Build();
+            var host = builder.Build();
 
             //var forecastService = host.Services.GetRequiredService<WeatherForecastService>();
             //await forecastService.GetRandomForecastAsync(DateTime.Now, 100);
