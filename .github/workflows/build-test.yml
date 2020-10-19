@@ -27,8 +27,8 @@ jobs:
     - name: Install dependencies
       if: steps.cache-nugets.outputs.cache-hit != 'true'
       run: |
-        dotnet restore ./LearningBlazorWASM
-        dotnet restore ./LearningBlazor.Tests
+        dotnet restore ./LearningBlazorWASM --locked-mode
+        dotnet restore ./LearningBlazor.Tests --locked-mode
 
     - name: Build
       run: |
