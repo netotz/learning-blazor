@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 
 using LearningBlazor.Data;
+using LearningBlazor.Models;
 
 using Microsoft.AspNetCore.Components;
 

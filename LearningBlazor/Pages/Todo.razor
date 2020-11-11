@@ -1,16 +1,22 @@
 ﻿@page "/todo"
 
-<h3>To do (@Incompleted)</h3>
+@if (CurrentAuthor is null) {
+    <p><em>Loading...</em></p>
+}
+else {
+    <h3>To do (@Incompleted)</h3>
 
-<ul>
-    @foreach(var item in Items) {
-        <li>
-            <input type="checkbox" @bind="item.IsDone" />
-            <input @bind="item.Title" />
-            @*@item.Title*@
-        </li>
-    }
-</ul>
+    <ul>
+        @foreach (var item in CurrentAuthor.TodoItems) {
+            <li>
+                <input type="checkbox" @bind="item.IsDone" />
+                <input @bind="item.Title" />
+                by @item.Author.Name
+                <button @onclick="async() => await DeleteItemAsync(item.Id)"><b>Delete</b></button>
+            </li>
+        }
+    </ul>
 
-<input placeholder="Something to do" @bind="NewTitle" />
-<button @onclick="AddItem">Add item</button>
+    <input placeholder="Something to do" @bind="NewTitle" />
+    <button @onclick="AddItemAsync">Add item</button>
+}

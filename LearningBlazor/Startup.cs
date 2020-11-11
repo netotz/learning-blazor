@@ -1,10 +1,15 @@
+using System;
+
 using LearningBlazor.Data;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace LearningBlazor {
 
@@ -22,6 +27,15 @@ namespace LearningBlazor {
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            //services.AddSingleton(new DatabaseService(Configuration.GetConnectionString("DummyDb")));
+            services.AddDbContext<TodoContext>(options =>
+                options.UseMySql(
+                    Configuration.GetConnectionString("DummyEFDb"),
+                    mySqlOptions => mySqlOptions
+                        .ServerVersion(new Version(5, 7, 31), ServerType.MySql)
+                        .CharSetBehavior(CharSetBehavior.NeverAppend))
+            );
+            //TodoContext.ConnectionString = Configuration.GetConnectionString("DummyEFDb");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
