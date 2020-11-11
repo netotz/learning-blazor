@@ -12,6 +12,7 @@ namespace LearningBlazor.Pages {
 
         [Inject]
         private TodoContext TodoContext { get; set; }
+        //private TodoContext TodoContext => new TodoContext();
 
         private Author CurrentAuthor { get; set; }
 
@@ -20,10 +21,13 @@ namespace LearningBlazor.Pages {
         private int Incompleted => CurrentAuthor.TodoItems.Count(i => !i.IsDone);
 
         protected override async Task OnInitializedAsync() {
-            //await TodoContext.InsertAuthorAsync(new Author {
+            //using var context = TodoContext;
+            //await context.InsertAuthorAsync(new Author {
             //    Name = "He"
             //});
             CurrentAuthor = await TodoContext.GetAuthorAsync(1);
+
+            await base.OnInitializedAsync();
         }
 
         private async Task AddItemAsync() {
@@ -34,6 +38,7 @@ namespace LearningBlazor.Pages {
                     Author = CurrentAuthor
                 };
 
+                //using var context = TodoContext;
                 await TodoContext.InsertTodoItemAsync(todoItem);
 
                 NewTitle = string.Empty;
@@ -42,6 +47,7 @@ namespace LearningBlazor.Pages {
 
         private async Task DeleteItemAsync(int itemId) {
             var item = CurrentAuthor.TodoItems.Find(i => i.Id == itemId);
+            //using var context = TodoContext;
             await TodoContext.DeleteTodoItemAsync(item);
         }
 

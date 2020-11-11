@@ -1,13 +1,22 @@
 ﻿
+using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
+
 using LearningBlazor.Models;
 
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace LearningBlazor.Data {
     public class TodoContext : DbContext {
+
+        //[Inject]
+        //private IConfiguration Configuration { get; set; }
 
         //public static string ConnectionString { get; set; }
 
@@ -16,11 +25,19 @@ namespace LearningBlazor.Data {
         public DbSet<TodoItem> TodoItem { get; set; }
 
         public TodoContext(DbContextOptions<TodoContext> options) : base(options) { }
+        //public TodoContext() {
+        //    ConnectionString = Configuration.GetConnectionString("DummyEFDb");
+        //}
 
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-        //if (!optionsBuilder.IsConfigured) {
-        //    optionsBuilder.UseMySQL(ConnectionString);
-        //}
+        //    //if (!optionsBuilder.IsConfigured) {
+        //        optionsBuilder.UseMySql(
+        //            ConnectionString,
+        //            //Configuration.GetConnectionString("DummyEFDb"),
+        //            mySqlOptions => mySqlOptions
+        //                .ServerVersion(new Version(5, 7, 31), ServerType.MySql)
+        //                .CharSetBehavior(CharSetBehavior.NeverAppend));
+        //    //}
         //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
