@@ -8,6 +8,8 @@
 
         public bool IsDone { get; set; }
 
-        public Author Author { get; set; }
+        public virtual Author Author { get; set; }
+
+        public virtual Category Category { get; set; }
     }
 }
