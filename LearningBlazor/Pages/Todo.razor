@@ -1,22 +1,31 @@
 ﻿@page "/todo"
+@using LearningBlazor.Models
 
-@if (CurrentAuthor is null) {
+@if (LocalItems is null) {
     <p><em>Loading...</em></p>
 }
 else {
     <h3>To do (@Incompleted)</h3>
 
-    <ul>
-        @foreach (var item in CurrentAuthor.TodoItems) {
-            <li>
-                <input type="checkbox" @bind="item.IsDone" />
-                <input @bind="item.Title" />
-                by @item.Author.Name
-                <button @onclick="async() => await DeleteItemAsync(item.Id)"><b>Delete</b></button>
-            </li>
-        }
-    </ul>
+    if (LocalItems.Count > 0) {
+        <ul>
+            @foreach (var item in LocalItems) {
+                <li>
+                    <em>@item.Category.Name</em>
+                    <input type="checkbox" @bind="item.IsDone" />
+                    <input @bind="item.Title" />
+                    by @item.Author.Name
+                    <button @onclick="async() => await DeleteItemAsync(item.Id)"><b>Delete</b></button>
+                </li>
+            }
+        </ul>
+    }
 
-    <input placeholder="Something to do" @bind="NewTitle" />
+    <select @bind="NewCategory.Id">
+        @foreach (var category in Category.DefaultCategories) {
+            <option value="@category.Id">@category.Name</option>
+        }
+    </select>
+    <input placeholder="Something to do" @bind="NewItem.Title" />
     <button @onclick="AddItemAsync">Add item</button>
 }

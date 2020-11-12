@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 using LearningBlazor.Data;
@@ -16,32 +17,50 @@ namespace LearningBlazor.Pages {
 
         private Author CurrentAuthor { get; set; }
 
-        private string NewTitle { get; set; } = string.Empty;
+        private List<TodoItem> LocalItems { get; set; }
 
-        private int Incompleted => CurrentAuthor.TodoItems.Count(i => !i.IsDone);
+        private TodoItem NewItem { get; set; }
+
+        private Category NewCategory { get; set; }
+
+        private int Incompleted => LocalItems.Count(i => !i.IsDone);
 
         protected override async Task OnInitializedAsync() {
             //using var context = TodoContext;
-            //await context.InsertAuthorAsync(new Author {
+
+            //await TodoContext.SeedCategoriesAsync();
+
+            //await TodoContext.InsertAuthorAsync(new Author {
             //    Name = "He"
             //});
-            CurrentAuthor = await TodoContext.GetAuthorAsync(1);
+            CurrentAuthor = await TodoContext.GetAuthorAsync(2);
+            //LocalItems = CurrentAuthor.TodoItems ?? new List<TodoItem>();
+            LocalItems = await TodoContext.GetAllTodoItemsAsync();
+
+            ResetNewItem();
 
             await base.OnInitializedAsync();
         }
 
+        private void ResetNewItem() {
+            NewItem = new TodoItem {
+                Title = "",
+                IsDone = false,
+                Author = CurrentAuthor
+            };
+            NewCategory = new Category();
+        }
+
         private async Task AddItemAsync() {
-            if (!string.IsNullOrWhiteSpace(NewTitle)) {
-                var todoItem = new TodoItem {
-                    Title = NewTitle,
-                    IsDone = false,
-                    Author = CurrentAuthor
-                };
-
+            if (!string.IsNullOrWhiteSpace(NewItem.Title)) {
                 //using var context = TodoContext;
-                await TodoContext.InsertTodoItemAsync(todoItem);
+                NewCategory = await TodoContext.GetCategoryByIdAsync(NewCategory.Id);
+                NewItem.Category = NewCategory;
 
-                NewTitle = string.Empty;
+                await TodoContext.InsertTodoItemAsync(NewItem);
+                LocalItems.Add(NewItem);
+
+                ResetNewItem();
             }
         }
 
