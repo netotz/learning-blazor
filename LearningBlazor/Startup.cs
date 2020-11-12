@@ -28,13 +28,20 @@ namespace LearningBlazor {
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
             //services.AddSingleton(new DatabaseService(Configuration.GetConnectionString("DummyDb")));
-            services.AddDbContext<TodoContext>(options =>
+
+            // local function
+            void getDbContextOptions(DbContextOptionsBuilder options) {
                 options.UseMySql(
                     Configuration.GetConnectionString("DummyEFDb"),
                     mySqlOptions => mySqlOptions
-                        .ServerVersion(new Version(5, 7, 31), ServerType.MySql)
-                        .CharSetBehavior(CharSetBehavior.NeverAppend))
-            );
+                    .ServerVersion(new Version(5, 7, 31), ServerType.MySql)
+                    .CharSetBehavior(CharSetBehavior.NeverAppend));
+                options.EnableSensitiveDataLogging(true);
+            }
+            //services.AddDbContext<AppDbContext>(options => getDbContextOptions(options));
+            services.AddDbContext<TodoContext>(options => getDbContextOptions(options));
+            services.AddDbContext<AuthorContext>(options => getDbContextOptions(options));
+
             //TodoContext.ConnectionString = Configuration.GetConnectionString("DummyEFDb");
         }
 

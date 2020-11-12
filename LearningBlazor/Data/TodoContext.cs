@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace LearningBlazor.Data {
-    public class TodoContext : DbContext {
+    public class TodoContext : AppDbContext {
 
         //[Inject]
         //private IConfiguration Configuration { get; set; }
@@ -42,36 +42,6 @@ namespace LearningBlazor.Data {
         //    //}
         //}
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder) {
-            modelBuilder.Entity<TodoItem>(entity => {
-                entity.ToTable(typeof(TodoItem).Name);
-                //entity.HasKey(item => item.Id);
-                entity.Property(item => item.Title)
-                    .HasMaxLength(255)
-                    .IsRequired();
-                //entity.HasOne(item => item.Author)
-                //    .WithMany(author => author.TodoItems);
-                //entity.OwnsOne(item => item.Category);
-            });
-
-            modelBuilder.Entity<Category>(entity => {
-                entity.ToTable(typeof(Category).Name);
-                entity.Property(c => c.Name)
-                    .HasMaxLength(50)
-                    .IsRequired();
-            });
-
-            modelBuilder.Entity<Author>(entity => {
-                entity.ToTable(typeof(Author).Name);
-                //entity.HasKey(author => author.Id);
-                entity.Property(author => author.Name)
-                    .HasMaxLength(255)
-                    .IsRequired();
-            });
-
-            base.OnModelCreating(modelBuilder);
-        }
-
         public async Task SeedCategoriesAsync() {
             foreach (var category in Category.DefaultCategories) {
                 //var category = new Category {
@@ -86,11 +56,6 @@ namespace LearningBlazor.Data {
             return await AuthorTable
                 .Include(a => a.TodoItems)
                 .SingleAsync(a => a.Id == id);
-        }
-
-        public async Task InsertAuthorAsync(Author author) {
-            await AuthorTable.AddAsync(author);
-            await SaveChangesAsync();
         }
 
         public async Task<List<TodoItem>> GetTodoItemsByAuthorIdAsync(int authorId) {

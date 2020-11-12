@@ -65,9 +65,11 @@ namespace LearningBlazor.Pages {
         }
 
         private async Task DeleteItemAsync(int itemId) {
-            var item = CurrentAuthor.TodoItems.Find(i => i.Id == itemId);
+            //var item = CurrentAuthor.TodoItems.Find(i => i.Id == itemId);
+            var item = LocalItems.Find(i => i.Id == itemId);
             //using var context = TodoContext;
             await TodoContext.DeleteTodoItemAsync(item);
+            LocalItems.Remove(item);
         }
 
         //private async Task UpdateItemAsync(ChangeEventArgs eventArgs) {
