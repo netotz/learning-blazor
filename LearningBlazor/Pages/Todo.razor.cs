@@ -33,6 +33,7 @@ namespace LearningBlazor.Pages {
             //await TodoContext.InsertAuthorAsync(new Author {
             //    Name = "He"
             //});
+
             CurrentAuthor = await TodoContext.GetAuthorAsync(2);
             //LocalItems = CurrentAuthor.TodoItems ?? new List<TodoItem>();
             LocalItems = await TodoContext.GetAllTodoItemsAsync();
@@ -54,9 +55,18 @@ namespace LearningBlazor.Pages {
         private async Task AddItemAsync() {
             if (!string.IsNullOrWhiteSpace(NewItem.Title)) {
                 //using var context = TodoContext;
-                NewCategory = await TodoContext.GetCategoryByIdAsync(NewCategory.Id);
-                NewItem.Category = NewCategory;
 
+                NewCategory = await TodoContext.GetCategoryByIdAsync(NewCategory.Id);
+                //NewCategory = Category.DefaultCategories[NewCategory.Id - 1];
+                NewItem.Category = NewCategory;
+                //NewItem.Category = Category.DefaultCategories[NewCategory.Id - 1];
+
+                //var item = new TodoItem {
+                //    Title = NewItem.Title,
+                //    IsDone = false,
+                //    Author = CurrentAuthor,
+                //    Category = NewCategory
+                //};
                 await TodoContext.InsertTodoItemAsync(NewItem);
                 LocalItems.Add(NewItem);
 
@@ -67,6 +77,7 @@ namespace LearningBlazor.Pages {
         private async Task DeleteItemAsync(int itemId) {
             //var item = CurrentAuthor.TodoItems.Find(i => i.Id == itemId);
             var item = LocalItems.Find(i => i.Id == itemId);
+            
             //using var context = TodoContext;
             await TodoContext.DeleteTodoItemAsync(item);
             LocalItems.Remove(item);

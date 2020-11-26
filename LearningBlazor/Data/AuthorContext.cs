@@ -10,6 +10,8 @@ namespace LearningBlazor.Data {
 
         public DbSet<Author> AuthorTable { get; set; }
 
+        public AuthorContext() { }
+
         public AuthorContext(DbContextOptions<AuthorContext> options) : base(options) { }
 
         public async Task<Author> GetAuthorAsync(int id) {

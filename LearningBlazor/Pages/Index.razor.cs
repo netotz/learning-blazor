@@ -14,6 +14,7 @@ namespace LearningBlazor.Pages {
         private Author CurrentAuthor { get; set; }
 
         protected override async Task OnInitializedAsync() {
+            //using var context = AuthorContext;
             //await AuthorContext.InsertAuthorAsync(new Author {
             //    Name = "Me"
             //});

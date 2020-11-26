@@ -26,6 +26,8 @@ namespace LearningBlazor.Data {
 
         public DbSet<Category> CategoryTable { get; set; }
 
+        public TodoContext() { }
+
         public TodoContext(DbContextOptions<TodoContext> options) : base(options) { }
         //public TodoContext() {
         //    ConnectionString = Configuration.GetConnectionString("DummyEFDb");
@@ -54,7 +56,7 @@ namespace LearningBlazor.Data {
 
         public async Task<Author> GetAuthorAsync(int id) {
             return await AuthorTable
-                .Include(a => a.TodoItems)
+                //.Include(a => a.TodoItems)
                 .SingleAsync(a => a.Id == id);
         }
 

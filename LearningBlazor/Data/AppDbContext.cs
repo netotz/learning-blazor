@@ -1,7 +1,13 @@
 ﻿
+using System;
+
 using LearningBlazor.Models;
 
+using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace LearningBlazor.Data {
     /// <summary>
@@ -9,9 +15,27 @@ namespace LearningBlazor.Data {
     /// </summary>
     public class AppDbContext : DbContext {
 
+        //[Inject]
+        //private IConfiguration Configuration { get; set; }
+        //public static string ConnectionString { get; set; }
+
+        public AppDbContext() { }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
         protected AppDbContext(DbContextOptions options) : base(options) { }
+
+        //protected override void OnConfiguring(DbContextOptionsBuilder options) {
+        //    options.UseMySql(
+        //        //ConnectionString,
+        //        Configuration.GetConnectionString("DummyEFDb"),
+        //        mySqlOptions => mySqlOptions
+        //        .ServerVersion(new Version(5, 7, 31), ServerType.MySql)
+        //        .CharSetBehavior(CharSetBehavior.NeverAppend));
+        //    options.EnableSensitiveDataLogging(true);
+
+        //    base.OnConfiguring(options);
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
             modelBuilder.Entity<TodoItem>(entity => {

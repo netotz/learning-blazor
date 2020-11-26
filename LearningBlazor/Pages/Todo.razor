@@ -10,6 +10,9 @@ else {
     if (LocalItems.Count > 0) {
         <ul>
             @foreach (var item in LocalItems) {
+                @if (item.Author is null) {
+                    continue;
+                }
                 <li>
                     <em>@item.Category.Name</em>
                     <input type="checkbox" @bind="item.IsDone" />

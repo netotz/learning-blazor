@@ -42,7 +42,9 @@ namespace LearningBlazor {
             services.AddDbContext<TodoContext>(options => getDbContextOptions(options));
             services.AddDbContext<AuthorContext>(options => getDbContextOptions(options));
 
-            //TodoContext.ConnectionString = Configuration.GetConnectionString("DummyEFDb");
+            //AppDbContext.ConnectionString = Configuration.GetConnectionString("DummyEFDb");
+
+            //services.AddSingleton(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
