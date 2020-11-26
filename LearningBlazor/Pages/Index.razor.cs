@@ -9,6 +9,9 @@ namespace LearningBlazor.Pages {
     public partial class Index {
 
         [Inject]
+        private WeatherForecastService ForecastService { get; set; }
+
+        [Inject]
         private AuthorContext AuthorContext { get; set; }
 
         private Author CurrentAuthor { get; set; }
@@ -22,6 +25,8 @@ namespace LearningBlazor.Pages {
             CurrentAuthor = await AuthorContext.GetAuthorAsync(1);
 
             await base.OnInitializedAsync();
+
+            ForecastService.Status++;
         }
     }
 }

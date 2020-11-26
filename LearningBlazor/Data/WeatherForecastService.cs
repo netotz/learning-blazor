@@ -13,6 +13,8 @@ namespace LearningBlazor.Data {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
+        public int Status { get; set; } = 0;
+
         public Task<WeatherForecast[]> GetForecastAsync(DateTime startDate) {
             var random = new Random();
             return Task.FromResult(Enumerable.Range(1, 5).Select(
